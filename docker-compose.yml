@@ -3,8 +3,8 @@ version: "3.9"
 services:
   web:
     environment:
-     - "DJANGO_SECRET_KEY=django-insecure-g0+@)gjzb5cono^+ppax4uv_hy*s804e==#ge%9=qao0)sup-("
-     - "DJANGO_DEBUG=True"
+      - "DJANGO_SECRET_KEY=django-insecure-g0+@)gjzb5cono^+ppax4uv_hy*s804e==#ge%9=qao0)sup-("
+      - "DJANGO_DEBUG=True"
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
@@ -13,6 +13,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+      - mailhog
     restart: on-failure
   db:
     image: postgres:13
@@ -20,6 +21,13 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
       
 volumes:
   postgres_data:
