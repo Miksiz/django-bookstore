@@ -1,0 +1,10 @@
+The Docker docs contain a section a large section on Security and specifically on rootless mode to avoid this. We will not be covering it here since this is a book on Django, not Docker, but especially if your website stores sensitive information do review the entire Security section closely before going live.
+
+ The final step is to add a trust authentication to the environment
+for the db. For large databases with many database users it is recommended to be more explicit
+with permissions, but this setting is a good choice when there is just one developer.
+
+A very useful third-party package is django-extensions226 which comes with a number of Django
+command extensions. Among them is shell_plus, which automatically loads all app models in
+the shell. This can save a lot of time over the life of a Django project and makes working with the
+Django ORM much easier

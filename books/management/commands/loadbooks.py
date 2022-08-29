@@ -31,7 +31,9 @@ class Command(BaseCommand):
         self.stderr.write(self.style.ERROR('Could not parse info for book %s' % (repr(book_data))))
         continue
       try:
-        image_data = urllib.request.urlretrieve(image_url)
+        if image_url:
+          image_data = urllib.request.urlretrieve(image_url)
+        else: image_data = None
       except:
         self.stderr.write(self.style.ERROR('Could not retrieve image from %s' % (image_url)))
         image_data = None
