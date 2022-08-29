@@ -8,3 +8,11 @@ A very useful third-party package is django-extensions226 which comes with a num
 command extensions. Among them is shell_plus, which automatically loads all app models in
 the shell. This can save a lot of time over the life of a Django project and makes working with the
 Django ORM much easier
+
+To generate secret key:
+import secrets
+print(secrets.token_urlsafe(38))
+
+A fun 3rd party package django-admin-honeypot294 will generate a fake admin log in screen
+and email site admins295 the IP address of anyone trying to attack your site at /admin. These IP
+addresses can then be added to a blocked address list for the site.
